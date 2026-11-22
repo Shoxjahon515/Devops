@@ -1,0 +1,27 @@
+2026-11-22 15:04:01 OK backup /home/student/backups/backup-20261122-150401-355.tar.gz
+2026-11-22 15:04:01 OK removed old backup /home/student/backups/backup-20261122-150344-566.tar.gz
+2026-11-22 15:04:01 OK service ssh is running
+2026-11-22 15:04:01 OK service cron is running
+2026-11-22 15:04:01 OK service nginx is running
+2026-11-22 15:04:01 END status=0
+2026-11-22 15:05:01 START source=/home/student/project-data
+2026-11-22 15:05:01 OK backup /home/student/backups/backup-20261122-150501-385.tar.gz
+2026-11-22 15:05:01 OK removed old backup /home/student/backups/backup-20261122-150345-592.tar.gz
+2026-11-22 15:05:01 OK service ssh is running
+2026-11-22 15:05:01 OK service cron is running
+2026-11-22 15:05:01 OK service nginx is running
+2026-11-22 15:05:01 END status=0
+2026-11-22 15:06:01 START source=/home/student/project-data
+2026-11-22 15:06:01 OK backup /home/student/backups/backup-20261122-150601-425.tar.gz
+2026-11-22 15:06:01 OK removed old backup /home/student/backups/backup-20261122-150346-617.tar.gz
+2026-11-22 15:06:01 OK service ssh is running
+2026-11-22 15:06:01 OK service cron is running
+2026-11-22 15:06:01 OK service nginx is running
+2026-11-22 15:06:01 END status=0
+
+total 20
+-rw-rw-r-- 1 student student 186 Nov 22 20:03 backup-20261122-150347-641.tar.gz
+-rw-rw-r-- 1 student student 186 Nov 22 20:03 backup-20261122-150348-667.tar.gz
+-rw-rw-r-- 1 student student 186 Nov 22 20:04 backup-20261122-150401-355.tar.gz
+-rw-rw-r-- 1 student student 186 Nov 22 20:05 backup-20261122-150501-385.tar.gz
+-rw-rw-r-- 1 student student 186 Nov 22 20:06 backup-20261122-150601-425.tar.gz
