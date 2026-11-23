@@ -1,10 +1,11 @@
 import logging
 import socket
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
@@ -17,6 +18,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 log = logging.getLogger("payfast")
 
 HOSTNAME = socket.gethostname()
+UI_FILE = Path(__file__).parent / "static" / "index.html"
 DB = Annotated[Session, Depends(get_db)]
 
 
@@ -59,7 +61,14 @@ def root():
         "version": get_settings().app_version,
         "host": HOSTNAME,
         "docs": "/docs",
+        "ui": "/ui",
     }
+
+
+@app.get("/ui", include_in_schema=False)
+def ui():
+    """Small test UI: one static page that calls this API with fetch()."""
+    return FileResponse(UI_FILE, media_type="text/html")
 
 
 @app.get("/health", tags=["system"])

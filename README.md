@@ -22,7 +22,7 @@
 | **Course** | Unit 4 — DevOps (Pearson BTEC Level 6, Unit 70728U) |
 | **Teacher** | Muhammadjon Xolmirzayev (`@MuhammadjonX`) |
 | **Topic** | 1 — Ticket booking (event, seat, booking, payment, ticket) |
-| **Version** | 1.0.0 — see [CHANGELOG](CHANGELOG.md) |
+| **Version** | 1.1.0 — see [CHANGELOG](CHANGELOG.md) |
 
 A REST API to sell tickets for events: create an event with a seat map, hold a seat, pay for it exactly once (even if the client retries) and receive a ticket. **Two people can never get the same seat**, even when the API runs as several replicas behind nginx — this is guaranteed by the database and verified under parallel load.
 
@@ -80,6 +80,8 @@ docker compose up --build -d
 docker compose ps                 # db, api, nginx -> healthy
 curl http://localhost/health      # {"status":"ok","db":"ok",...}
 ```
+
+Open **http://localhost/ui** for the test UI: create an event, pick a seat on the seat map, book it, pay and get the ticket. The header shows the API/database health and which container answered.
 
 Open **http://localhost/docs** (or `http://<VM-IP>/docs`) for the interactive Swagger UI.
 
@@ -175,9 +177,9 @@ Design decisions with their reasons: [`docs/decisions.md`](docs/decisions.md).
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
-uvicorn app.main:app --reload            # SQLite file payfast.db, http://127.0.0.1:8000/docs
+uvicorn app.main:app --reload            # SQLite file payfast.db, http://127.0.0.1:8000/ui
 ruff check . && ruff format --check .
-pytest -q                                # 14 tests, in-memory SQLite
+pytest -q                                # 15 tests, in-memory SQLite
 TEST_DATABASE_URL=postgresql+psycopg2://payfast:<password>@localhost:5432/payfast_test pytest -q
 ```
 

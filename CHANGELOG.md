@@ -2,6 +2,12 @@
 
 All notable changes are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versions: [SemVer](https://semver.org/).
 
+## [1.1.0] — 2026-11-23
+
+### Added
+- Test UI at `/ui` (Uzbek/English): event list, seat map, booking, payment with an `Idempotency-Key`, ticket lookup, live health and replica indicator.
+- Test that `/ui` is served.
+
 ## [1.0.0] — 2026-11-22
 
 ### Added

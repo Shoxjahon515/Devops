@@ -136,3 +136,10 @@ def test_list_events_counts(client, event, seat_id):
     events = client.get("/events").json()
     assert events[0]["total_seats"] == 6
     assert events[0]["available_seats"] == 5
+
+
+def test_ui_page_is_served(client):
+    r = client.get("/ui")
+    assert r.status_code == 200
+    assert r.headers["content-type"].startswith("text/html")
+    assert "PayFast Tickets" in r.text

@@ -16,5 +16,5 @@ def get_settings() -> Settings:
     return Settings(
         database_url=os.getenv("DATABASE_URL", "sqlite:///./payfast.db"),
         booking_hold_minutes=int(os.getenv("BOOKING_HOLD_MINUTES", "15")),
-        app_version=os.getenv("APP_VERSION", "1.0.0"),
+        app_version=os.getenv("APP_VERSION", "1.1.0"),
     )
