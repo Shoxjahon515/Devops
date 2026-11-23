@@ -22,7 +22,7 @@
 | **Kurs** | Unit 4 — DevOps (Pearson BTEC Level 6, Unit 70728U) |
 | **O'qituvchi** | Muhammadjon Xolmirzayev (`@MuhammadjonX`) |
 | **Mavzu** | 1 — Chipta bron qilish (event, seat, booking, payment, ticket) |
-| **Versiya** | 1.0.0 — [CHANGELOG](CHANGELOG.md) |
+| **Versiya** | 1.1.0 — [CHANGELOG](CHANGELOG.md) |
 
 Tadbirlarga chipta sotish uchun REST API. O'rindiqlar xaritasi bilan tadbir yaratiladi, o'rindiq vaqtincha band qilinadi, uning uchun to'lov aynan bir marta o'tadi (mijoz so'rovni qayta yuborsa ham) va chipta beriladi. **Ikki kishi hech qachon bitta o'rindiqni ololmaydi** — API nginx ortida bir nechta nusxada ishlasa ham. Buni ma'lumotlar bazasi kafolatlaydi va bu parallel yuklama ostida tekshirilgan.
 
@@ -80,6 +80,8 @@ docker compose up --build -d
 docker compose ps                 # db, api, nginx -> healthy
 curl http://localhost/health      # {"status":"ok","db":"ok",...}
 ```
+
+Test interfeysi: **http://localhost/ui** — tadbir yarating, o'rinlar xaritasidan joy tanlang, bron qiling, to'lang va chiptani oling. Yuqorida API/baza holati va qaysi konteyner javob bergani ko'rinadi.
 
 Interaktiv Swagger UI: **http://localhost/docs** (yoki `http://<VM-IP>/docs`).
 
@@ -175,9 +177,9 @@ Qarorlar va ularning sabablari: [`docs/decisions.md`](docs/decisions.md).
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements-dev.txt
-uvicorn app.main:app --reload            # SQLite fayli payfast.db, http://127.0.0.1:8000/docs
+uvicorn app.main:app --reload            # SQLite fayli payfast.db, http://127.0.0.1:8000/ui
 ruff check . && ruff format --check .
-pytest -q                                # 14 ta test, xotiradagi SQLite
+pytest -q                                # 15 ta test, xotiradagi SQLite
 TEST_DATABASE_URL=postgresql+psycopg2://payfast:<parol>@localhost:5432/payfast_test pytest -q
 ```
 
